@@ -4,9 +4,17 @@ ARG REPO_PATH=github.com/username/repository.git
 
 RUN apk add --no-cache git
 
-# clone the repository
-RUN --mount=type=secret,id=github_token,env=GITHUB_TOKEN \
-    git clone https://github_user:$GITHUB_TOKEN@REPO_PATH /app
+# Usando variável de ambiente
+# RUN --mount=type=secret,id=github_token,env=GITHUB_TOKEN \
+#     git clone https://github_user:$GITHUB_TOKEN@REPO_PATH /app
+
+RUN  --mount=type=secret,id=github_token \
+    # --mount=type=secret,id=xpto1 \
+    # --mount=type=secret,id=xpto2 \
+    GITHUB_TOKEN=$(cat /run/secrets/github_token) && \
+    git clone https://github_user:$GITHUB_TOKEN@$REPO_PATH /app
+
+RUN echo "valor de env $GITHUB_TOKEN"
 
 RUN chmod +x /app/script.sh
 
