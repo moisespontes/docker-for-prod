@@ -1,6 +1,6 @@
 FROM alpine
 
-ARG REPO_PATH=github.com/username/repository.git
+ARG REPO_PATH=github.com/username/private-repo.git
 
 RUN apk add --no-cache git
 

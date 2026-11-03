@@ -10,6 +10,17 @@ docker buildx build --secret id=github_token,src=./my-github-token.txt -t test .
 - **`-t test`**: Define `test` como nome (tag) da imagem gerada.
 - **`.`**: Define o diretório atual como contexto de build.
 
+### Mount SSH
+
+```bash
+docker buildx build --ssh default -t test .
+```
+
+- **`--ssh default`**: Disponibiliza o agente SSH padrão durante o build, permitindo autenticação em serviços remotos, como o GitHub, sem copiar chaves privadas para a imagem.
+- **`-t test`**: Define `test` como nome (tag) da imagem gerada.
+- **`.`**: Define o diretório atual como contexto de build.
+
+### Execução
 
 
 ```bash
