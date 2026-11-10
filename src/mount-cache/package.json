@@ -1,7 +1,7 @@
 {
   "name": "docker-para-producao-test1",
-  "version": "1.0.1",
-  "description": "## 01 - Capitulo: Pontape Inicial1",
+  "version": "1.0.0",
+  "description": "## 01 - Capitulo: Pontape Inicial",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
