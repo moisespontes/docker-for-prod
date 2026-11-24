@@ -45,6 +45,7 @@ docker buildx build -t test --cache-from=type=local,src=./buildx-cache --cache-t
 - **`--cache-to=type=local,dest=./buildx-cache`**: Exporta o cache gerado durante o build para o diretório `./buildx-cache`, permitindo reutilizá-lo em builds futuros.
 - **`.`**: Define o diretório atual como contexto de build.
 
+
 ```bash
 docker buildx build -t devpontes/test:latest --cache-from=type=local,src=./buildx-cache --cache-to=type=registry,ref=devpontes/test:buildcache .
 ```
@@ -98,6 +99,15 @@ docker buildx build -t test --no-cache --progress=plain --network none --allow n
 - **`--network none`**: Desativa o acesso à rede durante as etapas de build, impedindo conexões externas.
 - **`--allow network.host`**: Permite que o build utilize a rede do host quando solicitado por uma instrução compatível no Dockerfile.
 - **`.`**: Define o diretório atual como contexto de build.
+
+### Docker Bake
+
+- [Documentação do Bake](https://docs.docker.com/build/bake/)
+
+```bash
+docker buildx bake frontend
+```
+- **`docker buildx bake frontend`**: Executa o build do alvo (`target`) `frontend` definido no arquivo de configuração do Bake, construindo a imagem com as configurações especificadas para esse alvo.
 
 ## Otimização de Imagens Docker
 
