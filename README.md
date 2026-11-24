@@ -1,5 +1,7 @@
 # Comandos utilizados
 
+## Recursos do Buildkit
+
 ### Mount Secret
 
 ```bash
@@ -72,7 +74,34 @@ docker buildx build -t devpontes/test:base --cache-from=type=registry,ref=devpon
 - **`-f Dockerfile.base`**: Especifica o arquivo `Dockerfile.base` como referência para a construção da imagem.
 - **`.`**: Define o diretório atual como contexto de build.
 
-### Execução
+### Network Mode
+
+
+```bash
+docker buildx build -t test --no-cache --progress=plain --allow network.host .
+```
+
+- **`-t test`**: Define `test` como nome (tag) da imagem gerada.
+- **`--no-cache`**: Desativa o uso do cache de build, forçando a execução de todas as etapas do Dockerfile.
+- **`--progress=plain`**: Exibe o progresso do build em formato de texto simples, mostrando detalhadamente as etapas e suas respectivas saídas.
+- **`--allow network.host`**: Permite que o build utilize a rede do host, concedendo acesso à rede do sistema durante a construção da imagem.
+- **`.`**: Define o diretório atual como contexto de build.
+
+
+```bash
+docker buildx build -t test --no-cache --progress=plain --network none --allow network.host .
+```
+
+- **`-t test`**: Define `test` como nome (tag) da imagem gerada.
+- **`--no-cache`**: Desativa o uso do cache de build, forçando a execução de todas as etapas do Dockerfile.
+- **`--progress=plain`**: Exibe o progresso do build em formato de texto simples, mostrando detalhadamente as etapas e suas respectivas saídas.
+- **`--network none`**: Desativa o acesso à rede durante as etapas de build, impedindo conexões externas.
+- **`--allow network.host`**: Permite que o build utilize a rede do host quando solicitado por uma instrução compatível no Dockerfile.
+- **`.`**: Define o diretório atual como contexto de build.
+
+## Otimização de Imagens Docker
+
+## Execução
 
 
 ```bash
